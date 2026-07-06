@@ -1,0 +1,90 @@
+<!--
+  Info.plist additions for ZA Player Pro Web (iOS v1.4.15)
+  ────────────────────────────────────────────────────────
+  MERGE these keys into `ios/App/App/Info.plist` after running
+  `npx cap add ios` on your Mac. Do NOT overwrite the file — Capacitor
+  generates its own required keys (bundle id, versions, capabilities).
+
+  All keys below are safe to add on top of a fresh Capacitor iOS project.
+-->
+
+<key>CFBundleDisplayName</key>
+<string>ZA Player Pro Web</string>
+
+<key>CFBundleShortVersionString</key>
+<string>1.4.15</string>
+
+<key>CFBundleVersion</key>
+<string>202</string>
+
+<!-- Ship with landscape + portrait so streams look right in either.
+     LandscapeLeft first = default orientation for iPad fullscreen. -->
+<key>UISupportedInterfaceOrientations</key>
+<array>
+  <string>UIInterfaceOrientationPortrait</string>
+  <string>UIInterfaceOrientationLandscapeLeft</string>
+  <string>UIInterfaceOrientationLandscapeRight</string>
+</array>
+<key>UISupportedInterfaceOrientations~ipad</key>
+<array>
+  <string>UIInterfaceOrientationPortrait</string>
+  <string>UIInterfaceOrientationPortraitUpsideDown</string>
+  <string>UIInterfaceOrientationLandscapeLeft</string>
+  <string>UIInterfaceOrientationLandscapeRight</string>
+</array>
+
+<!-- Hide status bar for a proper full-screen player experience. -->
+<key>UIStatusBarHidden</key>
+<true/>
+<key>UIViewControllerBasedStatusBarAppearance</key>
+<false/>
+
+<!-- Allow all HTTP requests (mixed content). Same as Android's
+     usesCleartextTraffic=true — IPTV providers routinely serve
+     streams and logos over plain HTTP. Apple will flag this in App
+     Store review, so include the justification below when submitting:
+     "The app is a client for IPTV providers that ship media over
+      HTTP. The application is only used with content owned by the
+      user's own subscription — no third-party trackers involved."  -->
+<key>NSAppTransportSecurity</key>
+<dict>
+  <key>NSAllowsArbitraryLoads</key>
+  <true/>
+  <key>NSAllowsLocalNetworking</key>
+  <true/>
+</dict>
+
+<!-- Background playback for audio streams (radio-style IPTV). -->
+<key>UIBackgroundModes</key>
+<array>
+  <string>audio</string>
+</array>
+
+<!-- Privacy strings — required by App Store review. Fill in with
+     copy that matches your actual usage. -->
+<key>NSCameraUsageDescription</key>
+<string>ZA Player Pro Web does not use the camera.</string>
+<key>NSMicrophoneUsageDescription</key>
+<string>ZA Player Pro Web does not use the microphone.</string>
+<key>NSPhotoLibraryUsageDescription</key>
+<string>ZA Player Pro Web does not access photos.</string>
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>ZA Player Pro Web does not use location.</string>
+
+<!-- Encryption declaration: our app only uses standard HTTPS to
+     talk to the admin panel — no custom cryptography. Setting this
+     to NO skips the annual export compliance filing that Apple
+     otherwise asks for. -->
+<key>ITSAppUsesNonExemptEncryption</key>
+<false/>
+
+<!-- Deep-link scheme (matches Capacitor's default). -->
+<key>CFBundleURLTypes</key>
+<array>
+  <dict>
+    <key>CFBundleURLSchemes</key>
+    <array>
+      <string>tv.zaplayer.pro.web</string>
+    </array>
+  </dict>
+</array>

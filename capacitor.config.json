@@ -1,0 +1,28 @@
+{
+  "appId": "tv.zaplayer.pro.web",
+  "appName": "ZA Player Pro Web",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "server": {
+    "url": "https://zaplayerpro.club/admin/webplayer",
+    "iosScheme": "https",
+    "cleartext": false
+  },
+  "plugins": {
+    "CapacitorHttp": {
+      "enabled": true
+    }
+  },
+  "ios": {
+    "scheme": "ZA Player Pro Web",
+    "contentInset": "always",
+    "backgroundColor": "#000000",
+    "webContentsDebuggingEnabled": false,
+    "allowsLinkPreview": false,
+    "scrollEnabled": true,
+    "hideLogs": true,
+    "limitsNavigationsToAppBoundDomains": false,
+    "handleApplicationURL": true,
+    "presentationStyle": "fullscreen"
+  }
+}
